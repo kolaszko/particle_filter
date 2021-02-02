@@ -1,5 +1,6 @@
 import numpy as np
 
+
 class Agent:
     def __init__(self, heading, velocity, x_max, y_max):
         self.x = x_max * np.random.rand()
@@ -11,16 +12,14 @@ class Agent:
         self.y_max = y_max
 
     def move(self):
-
         turn = np.random.randint(-40, 40)
         turn = np.radians(turn)
-
 
         dx = np.sin(self.heading + turn) * self.velocity
         dy = np.cos(self.heading + turn) * self.velocity
 
         # If collision with edges turn around
-        if not 0 < self.x + dx  < self.x_max or not 0 < self.y + dy  < self.y_max:
+        if not 0 < self.x + dx < self.x_max or not 0 < self.y + dy < self.y_max:
             print('Detected collision')
             turn = np.pi
 
@@ -32,5 +31,3 @@ class Agent:
         self.heading += turn
 
         return turn
-
-

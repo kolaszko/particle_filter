@@ -7,7 +7,6 @@ from .particle_filter import ParticleFilter
 class LandmarkParticleFilter(ParticleFilter):
 
     def __init__(self, num_particles, width, height, landmarks, std_position, std_heading):
-
         self.width = width
         self.height = height
 
@@ -23,7 +22,6 @@ class LandmarkParticleFilter(ParticleFilter):
         self.std_position = std_position
         self.std_heading = std_heading
 
-
     def _init_sample(self):
         self.particles *= np.array([self.width, self.height])
 
@@ -34,9 +32,10 @@ class LandmarkParticleFilter(ParticleFilter):
 
     def predict(self, direction, velocity):
         self.headings += direction + np.random.normal(0, self.std_heading)
-        self.particles[:, 0] += velocity * np.sin(self.headings) + np.random.normal(0, self.std_position, (self.num_particles))
-        self.particles[:, 1] += velocity * np.cos(self.headings) + np.random.normal(0, self.std_position, (self.num_particles))
-
+        self.particles[:, 0] += velocity * np.sin(self.headings) + np.random.normal(0, self.std_position,
+                                                                                    (self.num_particles))
+        self.particles[:, 1] += velocity * np.cos(self.headings) + np.random.normal(0, self.std_position,
+                                                                                    (self.num_particles))
 
     def update(self, measurement):
         w_n = []

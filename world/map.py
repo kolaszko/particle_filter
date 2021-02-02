@@ -1,4 +1,3 @@
-import matplotlib.pyplot as pl
 import numpy as np
 
 
@@ -10,9 +9,7 @@ class Map:
         # self.agent = Agent()
 
     def _generate_landmarks(self, num_landmarks):
-
         landmarks = np.random.rand(num_landmarks, 2)
         landmarks *= np.array([self.width, self.height])
 
         return landmarks
-
