@@ -61,5 +61,5 @@ class World:
         d = np.linalg.norm(self.map.landmarks - [self.agent.x, self.agent.y], axis=-1)
 
         # Add noise to sensor
-        d += np.random.normal(0, 0.2, d.shape)
+        d += np.random.normal(0, 0.5, d.shape)
         return d

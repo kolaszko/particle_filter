@@ -9,7 +9,7 @@ if __name__ == '__main__':
     parser.add_argument('--height', type=int, default=480, help='height of map')
     parser.add_argument('--landmarks', type=int, default=6, help='number of landmarks')
     parser.add_argument('--particles', type=int, default=500, help='number of particles')
-    parser.add_argument('--std_position', type=float, default=10.0, help='position Gaussian noise standard deviation')
+    parser.add_argument('--std_position', type=float, default=5.0, help='position Gaussian noise standard deviation')
     parser.add_argument('--std_heading', type=float, default=0.05, help='heading Gaussian noise standard deviation')
     parser.add_argument('--steps', type=int, default=100, help='steps to go')
 
@@ -28,6 +28,3 @@ if __name__ == '__main__':
         f.resample()
 
         w.show(particles=f.particles, pos_e=f.mean_position())
-
-    anim = w.camera.animate()
-    anim.save('pf_2.gif', writer='imagemagick')
